@@ -1,57 +1,129 @@
-`Mesa <https://mesa3d.org>`_ - The 3D Graphics Library
-======================================================
+Clover
+======
 
+**Reviving OpenCL. Reconnecting legacy GPUs.**
+
+A revived and modernized Gallium3D OpenCL implementation, focused on
+legacy GPU support and modern LLVM/Clang compatibility.
+
+.. image:: https://img.shields.io/badge/version-0.0.1-blue?style=for-the-badge
+   :target: https://github.com/ToolGits/Clover/releases
+   :alt: Version
+
+.. image:: https://img.shields.io/badge/compute-OpenCL-green?style=for-the-badge
+   :target: https://www.khronos.org/opencl/
+   :alt: OpenCL
+
+.. image:: https://img.shields.io/badge/graphics-Gallium3D-orange?style=for-the-badge
+   :target: https://docs.mesa3d.org/
+   :alt: Gallium3D
+
+.. image:: https://img.shields.io/badge/build-Meson-red?style=for-the-badge
+   :target: https://mesonbuild.com/
+   :alt: Meson
+
+.. image:: https://img.shields.io/badge/organization-ToolGits-black?style=for-the-badge
+   :target: https://github.com/ToolGits
+   :alt: ToolGits
+
+----
+
+.. note::
+
+   **Clover 0.0.1** is an early revived release focused on modernization
+   and initial hardware testing.
+
+Overview
+--------
+
+Clover is an open-source OpenCL implementation built on top of Gallium3D.
+
+Originally developed as part of Mesa, Clover is being revived as an
+independent project under the **ToolGits** organization.
+
+The project focuses on modernizing the original implementation,
+maintaining compatibility with newer LLVM and Clang versions, and
+preserving OpenCL support for legacy GPUs.
 
 Source
 ------
 
-This repository lives at https://gitlab.freedesktop.org/mesa/mesa.
-Other repositories are likely forks, and code found there is not supported.
+The official Clover repository is hosted on GitHub:
 
+`github.com/ToolGits/Clover <https://github.com/ToolGits/Clover>`_
+
+Clover is independently maintained and based on the Mesa 25.1.9 codebase.
 
 Build & install
 ---------------
 
-You can find more information in our documentation (`docs/install.rst
-<https://docs.mesa3d.org/install.html>`_), but the recommended way is to use
-Meson (`docs/meson.rst <https://docs.mesa3d.org/meson.html>`_):
+Clover uses the Mesa build system and Meson.
 
-.. code-block:: sh
+Build configuration depends on the target platform, GPU driver,
+LLVM version and enabled Mesa components.
 
-  $ meson setup build
-  $ ninja -C build/
-  $ sudo ninja -C build/ install
+For more information, see the
+`Meson documentation <https://mesonbuild.com/>`_.
+
+Hardware and testing
+--------------------
+
+Initial development and testing focus on legacy AMD GPUs.
+
+**Test environment:**
+
+* GPU: AMD Radeon HD 7290
+* Architecture: AMD R600 / TeraScale 2
+* Mesa base: 25.1.9
+* LLVM / Clang: 23.1.4
+
+An OpenCL kernel has successfully compiled and executed on the
+Radeon HD 7290.
+
+This is an initial functional test, not a complete OpenCL
+conformance certification.
 
 Support
 -------
 
-Many Mesa devs hang on IRC; if you're not sure which channel is
-appropriate, you should ask your question on `OFTC's #dri-devel
-<irc://irc.oftc.net/dri-devel>`_, someone will redirect you if
-necessary.
-Remember that not everyone is in the same timezone as you, so it might
-take a while before someone qualified sees your question.
-To figure out who you're talking to, or which nick to ping for your
-question, check out `Who's Who on IRC
-<https://dri.freedesktop.org/wiki/WhosWho/>`_.
-
-The next best option is to ask your question in an email to the
-mailing lists: `mesa-dev\@lists.freedesktop.org
-<https://lists.freedesktop.org/mailman/listinfo/mesa-dev>`_
-
+For questions, technical discussions and project support, visit
+the `Clover GitHub repository
+<https://github.com/ToolGits/Clover>`_.
 
 Bug reports
 -----------
 
-If you think something isn't working properly, please file a bug report
-(`docs/bugs.rst <https://docs.mesa3d.org/bugs.html>`_).
+If you encounter a problem, please report it through
+`GitHub Issues <https://github.com/ToolGits/Clover/issues>`_.
 
+Include relevant system information, GPU details, LLVM/Clang versions
+and build logs whenever possible.
 
 Contributing
 ------------
 
-Contributions are welcome, and step-by-step instructions can be found in our
-documentation (`docs/submittingpatches.rst
-<https://docs.mesa3d.org/submittingpatches.html>`_).
+Contributions are welcome!
 
-Note that Mesa uses gitlab for patches submission, review and discussions.
+Clover is independently maintained under the **ToolGits** organization.
+Development, patches and discussions take place through GitHub.
+
+See the repository for current development activity and contribution
+opportunities.
+
+Credits & license
+-----------------
+
+Clover originated in the Mesa project and continues development based
+on the Mesa 25.1.9 codebase.
+
+Original authorship, copyright notices and applicable licenses
+remain respected.
+
+Clover retains the applicable licenses of its original source files.
+See individual source files and repository license information for details.
+
+----
+
+**Clover** — A ToolGits project.
+
+`ToolGits <https://github.com/ToolGits>`_
