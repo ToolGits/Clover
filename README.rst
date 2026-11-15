@@ -1,10 +1,11 @@
 Clover
 ======
 
-.. image:: .github/images/clover-logo.png
-   :alt: Clover Logo
-   :align: center
-   :width: 400px
+.. raw:: html
+
+   <p align="center">
+     <img src=".github/images/clover-logo.png" alt="Clover Logo" width="400">
+   </p>
 
 **Reviving OpenCL. Reconnecting legacy GPUs.**
 
