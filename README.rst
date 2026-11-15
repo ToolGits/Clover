@@ -1,6 +1,11 @@
 Clover
 ======
 
+.. image:: .github/images/clover-logo.png
+   :alt: Clover Logo
+   :align: center
+   :width: 400px
+
 **Reviving OpenCL. Reconnecting legacy GPUs.**
 
 A revived and modernized Gallium3D OpenCL implementation, focused on
