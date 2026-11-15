@@ -1,7 +1,7 @@
 Clover
 ======
 
-.. image:: .github/images/clover-logo.png
+.. figure:: .github/images/clover-logo.png
    :alt: Clover Logo
    :align: center
    :width: 400px
