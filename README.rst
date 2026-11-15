@@ -1,5 +1,4 @@
-Clover
-======
+<h1 align="center">Clover</h1>
 
 .. raw:: html
 
@@ -7,7 +6,9 @@ Clover
      <img src=".github/images/clover-logo.png" alt="Clover Logo" width="400">
    </p>
 
-**Reviving OpenCL. Reconnecting legacy GPUs.**
+<p align="center">
+  <strong>Reviving OpenCL. Reconnecting legacy GPUs.</strong>
+</p>
 
 A revived and modernized Gallium3D OpenCL implementation, focused on
 legacy GPU support and modern LLVM/Clang compatibility.
