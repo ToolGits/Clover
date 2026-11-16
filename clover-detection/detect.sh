@@ -29,23 +29,49 @@ clover_detect_system() {
     local distro_ids
     distro_ids=" ${CLOVER_OS_ID} ${CLOVER_OS_LIKE} "
 
-    case "$distro_ids" in
-        *" arch "*|*" manjaro "*|*" endeavouros "*)
-            CLOVER_DISTRO_FAMILY="arch"
-            ;;
-        *" fedora "*|*" nobara "*)
-            CLOVER_DISTRO_FAMILY="fedora"
-            ;;
-        *" debian "*|*" ubuntu "*|*" linuxmint "*|*" pop "*|*" mx "*)
-            CLOVER_DISTRO_FAMILY="debian"
-            ;;
-        *" opensuse "*|*" opensuse-leap "*|*" opensuse-tumbleweed "*|*" suse "*)
-            CLOVER_DISTRO_FAMILY="opensuse"
-            ;;
-        *" rhel "*|*" centos "*|*" rocky "*|*" almalinux "*|*" ol "*)
+    # Prefer explicit distribution IDs before ID_LIKE.
+    case "$CLOVER_OS_ID" in
+        rocky|almalinux|centos|rhel|ol)
             CLOVER_DISTRO_FAMILY="rhel"
             ;;
+        fedora|nobara)
+            CLOVER_DISTRO_FAMILY="fedora"
+            ;;
+        arch|manjaro|endeavouros)
+            CLOVER_DISTRO_FAMILY="arch"
+            ;;
+        debian|ubuntu|linuxmint|pop|mx|antix|q4os|linuxlite|lubuntu|xubuntu)
+            CLOVER_DISTRO_FAMILY="debian"
+            ;;
+        opensuse*|suse)
+            CLOVER_DISTRO_FAMILY="suse"
+            ;;
+        *)
+            # Fallback to compatible distribution families.
+            case "$distro_ids" in
+                *" rocky "*|*" almalinux "*|*" centos "*|*" rhel "*|*" ol "*)
+                    CLOVER_DISTRO_FAMILY="rhel"
+                    ;;
+                *" arch "*)
+                    CLOVER_DISTRO_FAMILY="arch"
+                    ;;
+                *" debian "*|*" ubuntu "*)
+                    CLOVER_DISTRO_FAMILY="debian"
+                    ;;
+                *" fedora "*)
+                    CLOVER_DISTRO_FAMILY="fedora"
+                    ;;
+                *" suse "*|*" opensuse "*)
+                    CLOVER_DISTRO_FAMILY="suse"
+                    ;;
+                *)
+                    CLOVER_DISTRO_FAMILY="unknown"
+                    ;;
+            esac
+            ;;
     esac
+
+    CLOVER_PACKAGE_MANAGER="unknown"
 
     case "$CLOVER_DISTRO_FAMILY" in
         arch)
@@ -63,17 +89,17 @@ clover_detect_system() {
             command -v apt-get >/dev/null 2>&1 &&
                 CLOVER_PACKAGE_MANAGER="apt"
             ;;
-        opensuse)
+        suse)
             command -v zypper >/dev/null 2>&1 &&
                 CLOVER_PACKAGE_MANAGER="zypper"
             ;;
     esac
 
+    CLOVER_LLVM_VERSION="not found"
     if command -v llvm-config >/dev/null 2>&1; then
         CLOVER_LLVM_VERSION="$(llvm-config --version 2>/dev/null || printf 'unknown')"
     fi
 }
-
 clover_detect_gpu() {
     local gpu_info=""
 
